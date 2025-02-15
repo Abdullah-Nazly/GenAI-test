@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #factDisplay {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.moving {
+            position: relative;
+            transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <p id="factDisplay">Click the button to get a random fact!</p>
+        <button id="factButton">Get Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "Crocodiles are reptiles and belong to the family Crocodylidae.",
+            "They are found in tropical regions of Africa, Asia, the Americas, and Australia.",
+            "Crocodiles can live for over 70 years in the wild.",
+            "They are carnivorous and primarily eat fish, birds, and mammals.",
+            "Crocodiles have powerful jaws with a bite force of over 3,000 pounds per square inch.",
+            "They are excellent swimmers and can hold their breath underwater for up to an hour.",
+            "Crocodiles are ectothermic, meaning they rely on external sources to regulate their body temperature.",
+            "They have a unique ability to see in the dark due to a special membrane in their eyes.",
+            "Crocodiles communicate through a variety of vocalizations, including growls and hisses.",
+            "Some species of crocodiles can reach lengths of over 20 feet."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById('factDisplay').innerText = facts[randomIndex];
+        });
+
+        const button = document.getElementById('factButton');
+
+        button.addEventListener('mouseover', () => {
+            const moveButton = () => {
+                const randomX = Math.floor(Math.random() * 100) - 50; // Random X offset
+                const randomY = Math.floor(Math.random() * 100) - 50; // Random Y offset
+                button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            };
+            moveButton();
+        });
+    </script>
+</body>
+</html>
